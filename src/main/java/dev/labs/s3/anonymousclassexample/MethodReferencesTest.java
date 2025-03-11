@@ -45,6 +45,7 @@ public class MethodReferencesTest {
             }
         }
 
+        // static <T> void sort(T[] a, Comparator<? super T> c)
         // 1. Without method reference
         Arrays.sort(rosterAsArray, new PersonAgeComparator());
 
