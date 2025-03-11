@@ -40,6 +40,7 @@ public class MethodReferencesTest {
                 roster.toArray(new Person[roster.size()]);
 
         class PersonAgeComparator implements Comparator<Person> {
+            @Override
             public int compare(Person a, Person b) {
                 return a.getBirthday().compareTo(b.getBirthday());
             }
@@ -84,6 +85,8 @@ public class MethodReferencesTest {
                 "Patricia", "Robert", "Michael", "Linda" };
         Arrays.sort(stringArray, String::compareToIgnoreCase);
 
+        // d. Reference to a constructor
+        // ClassName::new
         Set<Person> rosterSetLambda =
                 transferElements(roster, () -> { return new HashSet<>(); });
 
@@ -92,8 +95,7 @@ public class MethodReferencesTest {
         System.out.println("Printing rosterSet:");
         rosterSet.stream().forEach(p -> p.printPerson());
 
-        // d. Reference to a constructor
-        // ClassName::new
+
         // More examples: https://docs.oracle.com/javase/tutorial/java/javaOO/examples/MethodReferencesExamples.java
 
         // When to use: https://docs.oracle.com/javase/tutorial/java/javaOO/whentouse.html
