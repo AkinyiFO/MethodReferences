@@ -1,5 +1,7 @@
 package dev.labs.s3.anonymousclassexample;
 
+// Source: https://docs.oracle.com/javase/tutorial/java/javaOO/examples/MethodReferencesTest.java
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,21 +13,6 @@ import java.util.HashSet;
 import java.time.chrono.IsoChronology;
 
 public class MethodReferencesTest {
-
-    // The method transferElements copies elements from one collection to
-    // another
-
-    public static <T, SOURCE extends Collection<T>, DEST extends Collection<T>>
-    DEST transferElements(
-            SOURCE sourceCollection,
-            Supplier<DEST> collectionFactory) {
-
-        DEST result = collectionFactory.get();
-        for (T t : sourceCollection) {
-            result.add(t);
-        }
-        return result;
-    }
 
     public static void main(String... args) {
 
@@ -94,14 +81,25 @@ public class MethodReferencesTest {
                 roster, HashSet::new);
         System.out.println("Printing rosterSet:");
         rosterSet.stream().forEach(p -> p.printPerson());
-
-
-        // More examples: https://docs.oracle.com/javase/tutorial/java/javaOO/examples/MethodReferencesExamples.java
-
-        // When to use: https://docs.oracle.com/javase/tutorial/java/javaOO/whentouse.html
-        // 1. Nested Classes
-        // 2. Local Classes
-        // 3. Anonymous Classes
-        // 4. Lambda Expressions
     }
+    // The method transferElements copies elements from one collection to another
+    public static <T, SOURCE extends Collection<T>, DEST extends Collection<T>>
+    DEST transferElements(
+            SOURCE sourceCollection,
+            Supplier<DEST> collectionFactory) {
+
+        DEST result = collectionFactory.get();
+        for (T t : sourceCollection) {
+            result.add(t);
+        }
+        return result;
+    }
+
+    // More examples: https://docs.oracle.com/javase/tutorial/java/javaOO/examples/MethodReferencesExamples.java
+
+    // When to use: https://docs.oracle.com/javase/tutorial/java/javaOO/whentouse.html
+    // 1. Nested Classes
+    // 2. Local Classes
+    // 3. Anonymous Classes
+    // 4. Lambda Expressions
 }
